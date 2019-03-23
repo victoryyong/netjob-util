@@ -21,12 +21,7 @@ public class UUIDUtil {
 		return uuid.toUpperCase();
 	}
 
-	public static String get32FlowID() {
-		String flowId = System.currentTimeMillis() + getRandomNumber(19);
-		return flowId;
-	}
-
-	public static String get32ORDERID() {
+	public static String get32TradeNo() {
 		return DateUtil.getString(new Date(),"yyyyMMdd") + System.currentTimeMillis()
 				+ getRandomNumber(11);
 	}

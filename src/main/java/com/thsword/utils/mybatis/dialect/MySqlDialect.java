@@ -21,7 +21,7 @@ public class MySqlDialect extends Dialect {
         if (ValidatorUtil.isNull(page.getSort())) {
           page.setSort("c_createDate");
         }
-        if (sql.toUpperCase().indexOf("ORDER") > 0)
+        if (sql.toUpperCase().indexOf("\u00A0ORDER\u00A0") > 0)
         {
           String[] sqls = null;
           if (sql.indexOf("order") > 0) {
