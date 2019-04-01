@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 验证�?
+ * 验证
  *
  * @author 李小勇
  */
@@ -15,7 +15,7 @@ public class ValidatorUtil {
      * 非空
      *
      * @param obj
-     * @return true=非空 false=�?
+     * @return true=非空 false
      */
     public static boolean isNotNull(Object obj) {
         return !isNull(obj);
@@ -25,7 +25,7 @@ public class ValidatorUtil {
      * 为空
      *
      * @param obj
-     * @return true=�?false=非空
+     * @return true=false=非空
      */
     public static boolean isNull(Object obj) {
         if (obj instanceof Long) {

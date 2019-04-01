@@ -15,9 +15,9 @@ import java.util.Properties;
 public class ClassLoaderUtil {
 
     /**
-     * �?加载Java类�? 使用全限定类�?
-     * �?@paramclassName
-     * �?@return
+     * 加载Java类使用全限定类
+     * @paramclassName
+     * @return
      */
     @SuppressWarnings("rawtypes")
 	public static Class loadClass(String className) {
@@ -29,19 +29,19 @@ public class ClassLoaderUtil {
     }
 
     /**
-     * �?得到类加载器
-     * �?@return
+     * 得到类加载器
+     * @return
      */
     public static ClassLoader getClassLoader() {
         return ClassLoaderUtil.class.getClassLoader();
     }
 
     /**
-     * �?提供相对于classpath的资源路径，返回文件的输入流
-     * �?@paramrelativePath必须传�?资源的相对路径�?是相对于classpath的路径�?如果�?��查找classpath外部的资源，�?��使用�?./来查�?
-     * �?@return 文件输入�?
-     * �?@throwsIOException
-     * �?@throwsMalformedURLException
+     * 提供相对于classpath的资源路径，返回文件的输入流
+     * @paramrelativePath必须传资源的相对路径是相对于classpath的路径如果查找classpath外部的资源，使用./来查
+     * @return 文件输入
+     * @throwsIOException
+     * @throwsMalformedURLException
      */
     public static InputStream getStream(String relativePath) throws IOException {
         if (!relativePath.contains("../")) {
@@ -52,10 +52,10 @@ public class ClassLoaderUtil {
     }
 
     /**
-     * �?
-     * �?@paramurl
-     * �?@return
-     * �?@throwsIOException
+     * 
+     * @paramurl
+     * @return
+     * @throwsIOException
      */
     public static InputStream getStream(URL url) throws IOException {
         if (url != null) {
@@ -67,20 +67,20 @@ public class ClassLoaderUtil {
 
 
     /**
-     * �?
-     * �?@paramrelativePath必须传�?资源的相对路径�?是相对于classpath的路径�?如果�?��查找classpath外部的资源，�?��使用�?./来查�?
-     * �?@return
-     * �?@throwsMalformedURLException
-     * �?@throwsIOException
+     * 
+     * @paramrelativePath必须传资源的相对路径是相对于classpath的路径如果查找classpath外部的资源，使用./来查
+     * @return
+     * @throwsMalformedURLException
+     * @throwsIOException
      */
     public static InputStream getStreamByExtendResource(String relativePath) throws IOException {
         return ClassLoaderUtil.getStream(ClassLoaderUtil.getExtendResource(relativePath));
     }
 
     /**
-     * �?提供相对于classpath的资源路径，返回属�?对象，它是一个散列表
-     * �?@paramresource
-     * �?@return
+     * 提供相对于classpath的资源路径，返回属对象，它是一个散列表
+     * @paramresource
+     * @return
      */
     public static Properties getProperties(String resource) {
         Properties properties = new Properties();
@@ -93,16 +93,16 @@ public class ClassLoaderUtil {
     }
 
     /**
-     * �?得到本Class�?��的ClassLoader的Classpat的绝对路径�?
-     * �?URL形式�?
-     * �?@return
+     * 得到本Class的ClassLoader的Classpat的绝对路径
+     * URL形式
+     * @return
      */
     public static String getAbsolutePathOfClassLoaderClassPath() {
         return ClassLoaderUtil.getClassLoader().getResource("").toString();
     }
 
     /**
-     * @paramrelativePath 必须传�?资源的相对路径�?是相对于classpath的路径�?如果�?��查找classpath外部的资源，�?��使�?�?./来查�?
+     * @paramrelativePath 必须传资源的相对路径是相对于classpath的路径如果查找classpath外部的资源使./来查
      * @return资源的绝对URL
      * @throwsMalformedURLException
      */
@@ -122,16 +122,16 @@ public class ClassLoaderUtil {
         int containSum = ClassLoaderUtil.containSum(wildcardString, "../");
         classPathAbsolutePath = ClassLoaderUtil.cutLastString(classPathAbsolutePath, "/", containSum);
         String resourceAbsolutePath = classPathAbsolutePath + relativePath;
-//        ClassLoaderUtil.log.info("绝对路径�? + resourceAbsolutePath);
+//        ClassLoaderUtil.log.info("绝对路径 + resourceAbsolutePath);
         URL resourceAbsoluteURL = new URL(resourceAbsolutePath);
         return resourceAbsoluteURL;
     }
 
     /**
-     * �?
-     * �?@paramsource
-     * �?@paramdest
-     * �?@return
+     * 
+     * @paramsource
+     * @paramdest
+     * @return
      */
     private static int containSum(String source, String dest) {
         int containSum = 0;
@@ -144,11 +144,11 @@ public class ClassLoaderUtil {
     }
 
     /**
-     * �?
-     * �?@paramsource
-     * �?@paramdest
-     * �?@paramnum
-     * �?@return
+     * 
+     * @paramsource
+     * @paramdest
+     * @paramnum
+     * @return
      */
     private static String cutLastString(String source, String dest, int num) {
         // String cutSource=null;
@@ -159,9 +159,9 @@ public class ClassLoaderUtil {
     }
 
     /**
-     * �?
-     * �?@paramresource
-     * �?@return
+     * 
+     * @paramresource
+     * @return
      */
     public static URL getResource(String resource) {
 //        ClassLoaderUtil.log.info("传入的相对于classpath的路径：" + resource);
@@ -169,8 +169,8 @@ public class ClassLoaderUtil {
     }
 
     /**
-     * �?@paramargs
-     * �?@throwsMalformedURLException
+     * @paramargs
+     * @throwsMalformedURLException
      */
     public static void main(String[] args) throws MalformedURLException {
         //ClassLoaderUtil.getExtendResource("../spring/dao.xml");

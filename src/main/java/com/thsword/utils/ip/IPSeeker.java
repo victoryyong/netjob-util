@@ -37,29 +37,29 @@ public class IPSeeker {
         }
     }
 
-    // �?��固定常量，比如记录长度等�?
+    // 固定常量，比如记录长度等
     private static final int IP_RECORD_LENGTH = 7;
     private static final byte AREA_FOLLOWED = 0x01;
     private static final byte NO_AREA = 0x2;
 
     // 用来做为cache，查询一个ip时首先查看cache，以减少不必要的重复查找
     private final Hashtable ipCache;
-    // 随机文件访问�?
+    // 随机文件访问
     private RandomAccessFile ipFile;
     // 内存映射文件
     private MappedByteBuffer mbb;
     // 单一模式实例
     private static IPSeeker instance;
-    // 起始地区的开始和结束的绝对偏�?
+    // 起始地区的开始和结束的绝对偏
     private long ipBegin, ipEnd;
-    // 为提高效率�?采用的临时变�?
+    // 为提高效率采用的临时变
     private final IPLocation loc;
     private final byte[] buf;
     private final byte[] b4;
     private final byte[] b3;
 
     /**
-     * 私有构�?函数
+     * 私有构函数
      *
      * @param path QQWry地址
      */
@@ -105,7 +105,7 @@ public class IPSeeker {
     }
 
     /**
-     * 给定�?��地点的不完全名字，得到一系列包含s子串的IP范围记录
+     * 给定地点的不完全名字，得到一系列包含s子串的IP范围记录
      *
      * @param s 地点子串
      * @return 包含IPEntry类型的List
@@ -116,10 +116,10 @@ public class IPSeeker {
         for (long offset = ipBegin + 4; offset <= endOffset; offset += IP_RECORD_LENGTH) {
             // 读取结束IP偏移
             long temp = readLong3(offset);
-            // 如果temp不等�?1，读取IP的地点信�?
+            // 如果temp不等1，读取IP的地点信
             if (temp != -1) {
                 IPLocation loc = getIPLocation(temp);
-                // 判断是否这个地点里面包含了s子串，如果包含了，添加这个记录到List中，如果没有，继�?
+                // 判断是否这个地点里面包含了s子串，如果包含了，添加这个记录到List中，如果没有
                 if (loc.country.contains(s) || loc.area.contains(s)) {
                     IPEntry entry = new IPEntry();
                     entry.country = loc.country;
@@ -130,7 +130,7 @@ public class IPSeeker {
                     // 得到结束IP
                     readIP(temp, b4);
                     entry.endIp = IPUtil.getIpStringFromBytes(b4);
-                    // 添加该记�?
+                    // 添加该记
                     ret.add(entry);
                 }
             }
@@ -139,7 +139,7 @@ public class IPSeeker {
     }
 
     /**
-     * 给定�?��地点的不完全名字，得到一系列包含s子串的IP范围记录
+     * 给定地点的不完全名字，得到一系列包含s子串的IP范围记录
      *
      * @param s 地点子串
      * @return 包含IPEntry类型的List
@@ -159,7 +159,7 @@ public class IPSeeker {
                 int temp = readInt3(offset);
                 if (temp != -1) {
                     IPLocation loc = getIPLocation(temp);
-                    // 判断是否这个地点里面包含了s子串，如果包含了，添加这个记录到List中，如果没有，继�?
+                    // 判断是否这个地点里面包含了s子串，如果包含了，添加这个记录到List中，如果没有，继
                     if (loc.country.contains(s) || loc.area.contains(s)) {
                         IPEntry entry = new IPEntry();
                         entry.country = loc.country;
@@ -170,7 +170,7 @@ public class IPSeeker {
                         // 得到结束IP
                         readIP(temp, b4);
                         entry.endIp = IPUtil.getIpStringFromBytes(b4);
-                        // 添加该记�?
+                        // 添加该记
                         ret.add(entry);
                     }
                 }
@@ -182,7 +182,7 @@ public class IPSeeker {
     }
 
     /**
-     * 从内存映射文件的offset位置�?���?个字节读取一个int
+     * 从内存映射文件的offset位置个字节读取一个int
      *
      * @param offset
      * @return
@@ -193,7 +193,7 @@ public class IPSeeker {
     }
 
     /**
-     * 从内存映射文件的当前位置�?���?个字节读取一个int
+     * 从内存映射文件的当前位置个字节读取一个int
      *
      * @return
      */
@@ -202,19 +202,19 @@ public class IPSeeker {
     }
 
     /**
-     * 根据IP得到国家�?
+     * 根据IP得到国家
      *
-     * @param ip ip的字节数组形�?
+     * @param ip ip的字节数组形
      * @return 国家名字符串
      */
     public String getCountry(byte[] ip) {
-        // �?��ip地址文件是否正常
+        // 地址文件是否正常
         if (ipFile == null) {
         	return "错误的IP数据库文件";
         }
         // 保存ip，转换ip字节数组为字符串形式
         String ipStr = IPUtil.getIpStringFromBytes(ip);
-        // 先检查cache中是否已经包含有这个ip的结果，没有再搜索文�?
+        // 先检查cache中是否已经包含有这个ip的结果，没有再搜索文
         if (ipCache.containsKey(ipStr)) {
             IPLocation loc = (IPLocation) ipCache.get(ipStr);
             return loc.country;
@@ -226,7 +226,7 @@ public class IPSeeker {
     }
 
     /**
-     * 根据IP得到国家�?
+     * 根据IP得到国家
      *
      * @param ip IP的字符串形式
      * @return 国家名字符串
@@ -236,19 +236,19 @@ public class IPSeeker {
     }
 
     /**
-     * 根据IP得到地区�?
+     * 根据IP得到地区
      *
-     * @param ip ip的字节数组形�?
+     * @param ip ip的字节数组形
      * @return 地区名字符串
      */
     public String getArea(byte[] ip) {
-        // �?��ip地址文件是否正常
+        // ip地址文件是否正常
         if (ipFile == null) {
         	return "错误的IP数据库文件";
         }
         // 保存ip，转换ip字节数组为字符串形式
         String ipStr = IPUtil.getIpStringFromBytes(ip);
-        // 先检查cache中是否已经包含有这个ip的结果，没有再搜索文�?
+        // 先检查cache中是否已经包含有这个ip的结果，没有再搜索文
         if (ipCache.containsKey(ipStr)) {
             IPLocation loc = (IPLocation) ipCache.get(ipStr);
             return loc.area;
@@ -260,7 +260,7 @@ public class IPSeeker {
     }
 
     /**
-     * 根据IP得到地区�?
+     * 根据IP得到
      *
      * @param ip IP的字符串形式
      * @return 地区名字符串
@@ -270,7 +270,7 @@ public class IPSeeker {
     }
 
     /**
-     * 根据ip搜索ip信息文件，得到IPLocation结构，所搜索的ip参数从类成员ip中得�?
+     * 根据ip搜索ip信息文件，得到IPLocation结构，所搜索的ip参数从类成员ip中
      *
      * @param ip 要查询的IP
      * @return IPLocation结构
@@ -289,7 +289,7 @@ public class IPSeeker {
     }
 
     /**
-     * 从offset位置读取4个字节为�?��long，因为java为big-endian格式，所以没办法 用了这么�?��函数来做转换
+     * 从offset位置读取4个字节为long，因为java为big-endian格式，所以没办法 用了这么函数来做转换
      *
      * @param offset
      * @return 读取的long值，返回-1表示读取文件失败
@@ -309,7 +309,7 @@ public class IPSeeker {
     }
 
     /**
-     * 从offset位置读取3个字节为�?��long，因为java为big-endian格式，所以没办法 用了这么�?��函数来做转换
+     * 从offset位置读取3个字节为long，因为java为big-endian格式，所以没办法 用了这么函数来做转换
      *
      * @param offset
      * @return 读取的long值，返回-1表示读取文件失败
@@ -329,7 +329,7 @@ public class IPSeeker {
     }
 
     /**
-     * 从当前位置读�?个字节转换成long
+     * 从当前位置读个字节转换成long
      *
      * @return
      */
@@ -347,8 +347,8 @@ public class IPSeeker {
     }
 
     /**
-     * 从offset位置读取四个字节的ip地址放入ip数组中，读取后的ip为big-endian格式，但�?
-     * 文件中是little-endian形式，将会进行转�?
+     * 从offset位置读取四个字节的ip地址放入ip数组中，读取后的ip为big-endian格式，但
+     * 文件中是little-endian形式，将会进行转
      *
      * @param offset
      * @param ip
@@ -369,8 +369,8 @@ public class IPSeeker {
     }
 
     /**
-     * 从offset位置读取四个字节的ip地址放入ip数组中，读取后的ip为big-endian格式，但�?
-     * 文件中是little-endian形式，将会进行转�?
+     * 从offset位置读取四个字节的ip地址放入ip数组中，读取后的ip为big-endian格式，但
+     * 文件中是little-endian形式，将会进行转
      *
      * @param offset
      * @param ip
@@ -387,11 +387,11 @@ public class IPSeeker {
     }
 
     /**
-     * 把类成员ip和beginIp比较，注意这个beginIp是big-endian�?
+     * 把类成员ip和beginIp比较，注意这个beginIp是big-endian
      *
      * @param ip      要查询的IP
      * @param beginIp 和被查询IP相比较的IP
-     * @return 相等返回0，ip大于beginIp则返�?，小于返�?1�?
+     * @return 相等返回0，ip大于beginIp则返，小于返
      */
     private int compareIP(byte[] ip, byte[] beginIp) {
         for (int i = 0; i < 4; i++) {
@@ -407,7 +407,7 @@ public class IPSeeker {
      *
      * @param b1
      * @param b2
-     * @return 若b1大于b2则返�?，相等返�?，小于返�?1
+     * @return 若b1大于b2则返，相等返，小于返
      */
     private int compareByte(byte b1, byte b2) {
         if ((b1 & 0xFF) > (b2 & 0xFF)) {
@@ -422,10 +422,10 @@ public class IPSeeker {
     }
 
     /**
-     * 这个方法将根据ip的内容，定位到包含这个ip国家地区的记录处，返回一个绝对偏�?方法使用二分法查找�?
+     * 这个方法将根据ip的内容，定位到包含这个ip国家地区的记录处，返回一个绝对偏方法使用二分法查找
      *
      * @param ip 要查询的IP
-     * @return 如果找到了，返回结束IP的偏移，如果没有找到，返�?1
+     * @return 如果找到了，返回结束IP的偏移，如果没有找到，返
      */
     private long locateIP(byte[] ip) {
         long m = 0;
@@ -457,8 +457,8 @@ public class IPSeeker {
                 return readLong3(m + 4);
             }
         }
-        // 如果循环结束了，那么i和j必定是相等的，这个记录为�?��能的记录，但是并�?
-        // 肯定就是，还要检查一下，如果是，就返回结束地�?��的绝对偏�?
+        // 如果循环结束了，那么i和j必定是相等的，这个记录为能的记录，但是并
+        // 肯定就是，还要检查一下，如果是，就返回结束地的绝对偏
         m = readLong3(m + 4);
         readIP(m, b4);
         r = compareIP(ip, b4);
@@ -470,7 +470,7 @@ public class IPSeeker {
     }
 
     /**
-     * 得到begin偏移和end偏移中间位置记录的偏�?
+     * 得到begin偏移和end偏移中间位置记录的偏
      *
      * @param begin
      * @param end
@@ -486,7 +486,7 @@ public class IPSeeker {
     }
 
     /**
-     * 给定�?��ip国家地区记录的偏移，返回�?��IPLocation结构
+     * 给定ip国家地区记录的偏移，返回IPLocation结构
      *
      * @param offset
      * @return
@@ -495,14 +495,14 @@ public class IPSeeker {
         try {
             // 跳过4字节ip
             ipFile.seek(offset + 4);
-            // 读取第一个字节判断是否标志字�?
+            // 读取第一个字节判断是否标志字
             byte b = ipFile.readByte();
             if (b == AREA_FOLLOWED) {
                 // 读取国家偏移
                 long countryOffset = readLong3();
                 // 跳转至偏移处
                 ipFile.seek(countryOffset);
-                // 再检查一次标志字节，因为这个时�?这个地方仍然可能是个重定�?
+                // 再检查一次标志字节，因为这个时这个地方仍然可能是个重定
                 b = ipFile.readByte();
                 if (b == NO_AREA) {
                     loc.country = readString(readLong3());
@@ -541,14 +541,14 @@ public class IPSeeker {
     private IPLocation getIPLocation(int offset) {
         // 跳过4字节ip
         mbb.position(offset + 4);
-        // 读取第一个字节判断是否标志字�?
+        // 读取第一个字节判断是否标志字
         byte b = mbb.get();
         if (b == AREA_FOLLOWED) {
             // 读取国家偏移
             int countryOffset = readInt3();
             // 跳转至偏移处
             mbb.position(countryOffset);
-            // 再检查一次标志字节，因为这个时�?这个地方仍然可能是个重定�?
+            // 再检查一次标志字节，因为这个时这个地方仍然可能是个重定
             b = mbb.get();
             if (b == NO_AREA) {
                 loc.country = readString(readInt3());
@@ -569,7 +569,7 @@ public class IPSeeker {
     }
 
     /**
-     * 从offset偏移�?��解析后面的字节，读出�?��地区�?
+     * 从offset偏移解析后面的字节，读出地区
      *
      * @param offset
      * @return 地区名字符串
@@ -613,7 +613,7 @@ public class IPSeeker {
      * 从offset偏移处读取一个以0结束的字符串
      *
      * @param offset
-     * @return 读取的字符串，出错返回空字符�?
+     * @return 读取的字符串，出错返回空字符
      */
     private String readString(long offset) {
         try {
@@ -630,7 +630,7 @@ public class IPSeeker {
     }
 
     /**
-     * 从内存映射文件的offset位置得到�?��0结尾字符�?
+     * 从内存映射文件的offset位置得到结尾字符
      *
      * @param offset
      * @return

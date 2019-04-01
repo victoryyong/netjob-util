@@ -36,7 +36,7 @@ public class RandomUtil {
     }
 
     /**
-     * 返回指定长的随机数字母字符串只包含大小写字母)
+     * 返回指定长的随机数字母字符串只包含大小写字母
      *
      * @param length 随机字符串长度
      * @return String

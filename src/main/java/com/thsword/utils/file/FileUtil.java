@@ -57,22 +57,22 @@ public class FileUtil {
 	 * 单个文件上传
 	 *
 	 * @param content
-	 *            上传的文件内�?
+	 *            上传的文件内
 	 * @param pathAndName
 	 *            路径和文件名
 	 * @return
 	 */
 	public static boolean upload(String content, String pathAndName) {
-		// 上传文件的目�?
+		// 上传文件的目
 		File filePt = new File(pathAndName);
 		boolean flag = false;
 		// 判断文件目录是否存在，没有就创建
 		if (!filePt.getParentFile().exists()) {
 			flag = filePt.getParentFile().mkdirs();
 		}
-		// 存在或创建目录成�?
+		// 存在或创建目录成
 		if (filePt.getParentFile().exists() || flag) {
-			// 输出�?
+			// 输出
 			OutputStreamWriter out = null;
 			try {
 				out = new OutputStreamWriter(new FileOutputStream(pathAndName),
@@ -105,28 +105,28 @@ public class FileUtil {
 	 * @return
 	 */
 	public static boolean upload(File file, String pathAndName) {
-		// 上传文件的目�?
+		// 上传文件的目
 		File filePt = new File(pathAndName);
 		boolean flag = false;
 		// 判断文件目录是否存在，没有就创建
 		if (!filePt.getParentFile().exists()) {
 			flag = filePt.getParentFile().mkdirs();
 		}
-		// 存在或创建目录成�?
+		// 存在或创建目录成
 		if (filePt.exists() || flag) {
-			// 输出�?
+			// 输出
 			OutputStream os = null;
-			// 输入�?
+			// 输入
 			InputStream is = null;
 			try {
-				// 获得输出�?
+				// 获得输出
 				os = new FileOutputStream(pathAndName);
-				// 获得文件输入�?
+				// 获得文件输入
 				is = new FileInputStream(file);
 				byte[] bt = new byte[1024];
 				int length;
 				while ((length = is.read(bt)) != -1) {
-					// 写文�?
+					// 写文
 					os.write(bt, 0, length);
 				}
 			} catch (Exception e) {
@@ -157,35 +157,35 @@ public class FileUtil {
 	 * 单个文件上传
 	 *
 	 * @param file上传的文
-	 *            �?
+	 *            
 	 * @param fileName上传的文件名
 	 * @param path文件保存的路
-	 *            �?
+	 *            
 	 * @return
 	 */
 	public static boolean upload(File file, String fileName, String path) {
-		// 上传文件的目�?
+		// 上传文件的目
 		File filePt = new File(path);
 		boolean flag = false;
 		// 判断文件目录是否存在，没有就创建
 		if (!filePt.exists()) {
 			flag = filePt.mkdirs();
 		}
-		// 存在或创建目录成�?
+		// 存在或创建目录成
 		if (filePt.exists() || flag) {
-			// 输出�?
+			// 输出
 			OutputStream os = null;
-			// 输入�?
+			// 输入
 			InputStream is = null;
 			try {
-				// 获得输出�?
+				// 获得输出
 				os = new FileOutputStream(path + fileName);
-				// 获得文件输入�?
+				// 获得文件输入
 				is = new FileInputStream(file);
 				byte[] bt = new byte[1024];
 				int length;
 				while ((length = is.read(bt)) != -1) {
-					// 写文�?
+					// 写文
 					os.write(bt, 0, length);
 				}
 			} catch (Exception e) {
@@ -216,10 +216,10 @@ public class FileUtil {
 	 * 单个文件上传自定义文件名
 	 *
 	 * @param file上传的文
-	 *            �?
+	 *            
 	 * @param fileName上传的文件名
 	 * @param path文件保存的路
-	 *            �?
+	 *            
 	 * @param param保存的文件名
 	 * @return
 	 */
@@ -227,29 +227,28 @@ public class FileUtil {
 			String param) {
 		// 文件后缀
 		String hz = fileName.substring(fileName.lastIndexOf("."));
-		// 上传文件的目�?
+		// 上传文件的目
 		File filePt = new File(path);
 		boolean flag = false;
 		// 判断文件目录是否存在，没有就创建
 		if (!filePt.exists()) {
 			flag = filePt.mkdirs();
 		}
-		// 存在或创建目录成�?
+		// 存在或创建目录成
 		if (filePt.exists() || flag) {
-
-			// 输出�?
+			// 输出
 			OutputStream os = null;
-			// 输入�?
+			// 输入
 			InputStream is = null;
 			try {
-				// 获得输出�?
+				// 获得输出
 				os = new FileOutputStream(path + param + hz);
-				// 获得文件输入�?
+				// 获得文件输入
 				is = new FileInputStream(file);
 				byte[] bt = new byte[1024];
 				int length;
 				while ((length = is.read(bt)) != -1) {
-					// 写文�?
+					// 写文
 					os.write(bt, 0, length);
 				}
 			} catch (Exception e) {
@@ -295,7 +294,7 @@ public class FileUtil {
 	}
 
 	/**
-	 * 删除文件或空文件�?
+	 * 删除文件或空文件
 	 *
 	 * @param filePath
 	 */
@@ -310,7 +309,7 @@ public class FileUtil {
 	}
 
 	/**
-	 * �?��文件/目录是否存在
+	 * 文件/目录是否存在
 	 *
 	 * @param file文件
 	 *            /目录路径
@@ -318,12 +317,12 @@ public class FileUtil {
 	 */
 	public static boolean exist(final String file) {
 		final File newFile = new File(file);
-		// �?��目录是否存在
+		// 目录是否存在
 		return newFile.exists();
 	}
 
 	/**
-	 * 读文�?
+	 * 读文
 	 *
 	 * @param file文件
 	 * @return<BufferedReader>
@@ -341,7 +340,7 @@ public class FileUtil {
 	}
 
 	/**
-	 * 读文�?
+	 * 读文
 	 *
 	 * @param fielPath文件
 	 * @return<BufferedReader>
@@ -357,7 +356,7 @@ public class FileUtil {
 	}
 
 	/**
-	 * 读文�?
+	 * 读文
 	 *
 	 * @param fielPath文件绝对路径
 	 * @return String
@@ -375,7 +374,7 @@ public class FileUtil {
 				if (!file.exists()) {
 					return null;
 				}
-				fr = new FileReader(file); // 打开�?
+				fr = new FileReader(file); // 打开
 				br = new BufferedReader(fr);
 			} catch (final FileNotFoundException e) {
 				e.printStackTrace();
@@ -385,7 +384,7 @@ public class FileUtil {
 				sb.append(temp);
 			}
 			try {
-				br.close(); // 关闭�?
+				br.close(); // 关闭
 			} catch (final IOException e) {
 				e.printStackTrace();
 				return null;
@@ -398,10 +397,10 @@ public class FileUtil {
 	}
 
 	/**
-	 * 读文�?
+	 * 读文
 	 *
 	 * @param bufferedReader文件
-	 *            �?
+	 *            
 	 * @return
 	 */
 	public static String readFile(final BufferedReader bufferedReader) {
@@ -412,7 +411,7 @@ public class FileUtil {
 				sb.append(temp);
 			}
 			try {
-				bufferedReader.close(); // 关闭�?
+				bufferedReader.close(); // 关闭
 			} catch (final IOException e) {
 				e.printStackTrace();
 				return null;
@@ -461,7 +460,7 @@ public class FileUtil {
 	}
 
 	/**
-	 * 文件夹分�?
+	 * 文件夹分
 	 *
 	 * @param number
 	 * @return "/number/number/"
@@ -469,9 +468,9 @@ public class FileUtil {
 	public static String getFileShunt(final long number) {
 		try {
 			if (0 < number) {
-				// 文件�?
+				// 文件
 				long tmpPath = FileUtil.getShuntPath(number - 1, 2000, 1);
-				// 文件�?
+				// 文件
 				long tmpPathRoot = FileUtil.getShuntPath(tmpPath - 1, 2000, 1);
 				return File.separator + tmpPathRoot + File.separator
 						+ (tmpPath - (tmpPathRoot - 1) * 2000) + File.separator;
@@ -484,10 +483,10 @@ public class FileUtil {
 	}
 
 	/**
-	 * 文件夹分�?
+	 * 文件夹分
 	 *
 	 * @param num随机
-	 *            �?
+	 *            
 	 * @param base基数
 	 * @param add增量
 	 * @return

@@ -15,10 +15,10 @@ import java.util.regex.Pattern;
 public class StringUtil {
 
 	/**
-	 * 发�?加密信息�?�?��编码
+	 * 发加密信息编码
 	 * 
 	 * @param str
-	 *            加密的内�?
+	 *            加密的内
 	 * @param encoding
 	 *            编码
 	 * @return
@@ -49,7 +49,7 @@ public class StringUtil {
 	}
 
 	/**
-	 * 验证输入的邮箱格式是否符�?
+	 * 验证输入的邮箱格式是否符
 	 * 
 	 * @param email
 	 * @return 是否合法

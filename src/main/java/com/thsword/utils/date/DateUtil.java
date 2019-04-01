@@ -129,7 +129,7 @@ public class DateUtil {
     }
 
     /**
-     * 获取2个时间之间的分钟�?
+     * 获取2个时间之间的分钟
      *
      * @param startday
      * @param endday
@@ -148,7 +148,7 @@ public class DateUtil {
     }
 
     /**
-     * 返回指定时间�?�?
+     * 返回指定时间
      *
      * @param time
      * @return
@@ -164,7 +164,7 @@ public class DateUtil {
     }
 
     /**
-     * 返回指定时间�?3�?
+     * 返回指定时间
      *
      * @param time
      * @return
@@ -183,7 +183,7 @@ public class DateUtil {
      * 获取相差指定日期
      *
      * @param time指定日期
-     * @param days可正可负 负为指定日期前，正为指定日期�?
+     * @param days可正可负 负为指定日期前，正为指定日期
      * @return
      */
     public static Timestamp getTimeAdd(Timestamp time, int days) {
@@ -194,9 +194,9 @@ public class DateUtil {
     }
 
     /**
-     * 获取距离当前时间的指定日�?
+     * 获取距离当前时间的指定日
      *
-     * @param days可正可负 负为指定日期前，正为指定日期�?
+     * @param days可正可负 负为指定日期前，正为指定日期
      * @return
      */
     public static Date getDayChange(int days) {
@@ -210,7 +210,7 @@ public class DateUtil {
      * 获取相差指定日期
      *
      * @param time指定日期
-     * @param days可正可负 负为指定日期�?，正为指定日期后
+     * @param days可正可负 负为指定日期，正为指定日期后
      * @return
      */
     public static Timestamp getMonthAdd(Timestamp time, int months) {
@@ -223,7 +223,7 @@ public class DateUtil {
     }
 
     /**
-     * 判断给定日期是否已经超时 判断年，月，�?
+     * 判断给定日期是否已经超时 判断年，月
      *
      * @param time指定日期
      * @return 超时=true，未超时=false
@@ -236,7 +236,7 @@ public class DateUtil {
     }
 
     /**
-     * 判断给定日期是否已经超时 判断年，月，�?
+     * 判断给定日期是否已经超时 判断年，月，
      *
      * @param date
      * @return 超时=true，未超时=false
@@ -282,7 +282,7 @@ public class DateUtil {
      */
     public static Date getThisMonthEndDate() {
         Calendar cal = Calendar.getInstance();
-        // 当月�?��天数
+        // 当月天数
         int a = cal.getActualMaximum(Calendar.DATE);
         cal.set(Calendar.DAY_OF_MONTH, a);
         cal.set(Calendar.HOUR_OF_DAY, 23);
@@ -312,7 +312,7 @@ public class DateUtil {
     }
 
     /**
-     * 获得时间�?�?
+     * 获得时间
      *
      * @param date
      * @return
@@ -324,7 +324,7 @@ public class DateUtil {
     }
 
     /**
-     * 获得前后几天�?的前，正的后
+     * 获得前后几天的前，正的后
      *
      * @param date
      * @param days
@@ -338,7 +338,7 @@ public class DateUtil {
     }
 
     /**
-     * 获得指定时间后的星期�?
+     * 获得指定时间后的星期
      *
      * @param date
      * @return
@@ -351,7 +351,7 @@ public class DateUtil {
     }
 
     /**
-     * 获得指定时间后的星期�?
+     * 获得指定时间后的星期
      *
      * @param date
      * @return
@@ -364,7 +364,7 @@ public class DateUtil {
     }
 
     /**
-     * 获得指定时间后的星期�?
+     * 获得指定时间后的星期
      *
      * @param date
      * @return
@@ -377,7 +377,7 @@ public class DateUtil {
     }
 
     /**
-     * 获得指定时间后的星期�?
+     * 获得指定时间后的星期
      *
      * @param date
      * @return
@@ -390,7 +390,7 @@ public class DateUtil {
     }
 
     /**
-     * 获得指定时间后的星期�?
+     * 获得指定时间后的星期
      *
      * @param date
      * @return
@@ -403,7 +403,7 @@ public class DateUtil {
     }
 
     /**
-     * 获得指定时间后的星期�?
+     * 获得指定时间后的星期
      *
      * @param date
      * @return
@@ -416,7 +416,7 @@ public class DateUtil {
     }
 
     /**
-     * 获得指定时间后的星期�?
+     * 获得指定时间后的星期
      *
      * @param date
      * @return
@@ -431,7 +431,7 @@ public class DateUtil {
     /**
      * 取得年龄
      *
-     * @param year出生�?
+     * @param year出生
      * @return
      */
     public static int getAge(int year, int month, int day) {
@@ -459,7 +459,7 @@ public class DateUtil {
     }
 
     /**
-     * 取得当前�?
+     * 取得当前
      *
      * @return
      */
@@ -474,13 +474,13 @@ public class DateUtil {
     }
 
     /**
-     * 取得当前�?
+     * 取得当前
      *
      * @return
      */
     public static int getNowMonth() {
         try {
-            // 当前�?
+            // 当前
             return Calendar.getInstance().get(Calendar.MONTH) + 1;
         } catch (Exception e) {
             e.printStackTrace();
@@ -489,13 +489,13 @@ public class DateUtil {
     }
 
     /**
-     * 取得当前�?
+     * 取得当前
      *
      * @return
      */
     public static int getNowDay() {
         try {
-            // 当前�?
+            // 当前
             return Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
         } catch (Exception e) {
             e.printStackTrace();

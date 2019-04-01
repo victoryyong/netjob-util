@@ -36,12 +36,12 @@ public class IPUtil {
 	 * 对原始字符串进行编码转换，如果失败，返回原始的字符串
 	 *
 	 * @param s
-	 *            原始字符�?
+	 *            原始字符
 	 * @param srcEncoding
-	 *            源编码方�?
+	 *            源编码方
 	 * @param destEncoding
 	 *            目标编码方式
-	 * @return 转换编码后的字符串，失败返回原始字符�?
+	 * @return 转换编码后的字符串，失败返回原始字符
 	 */
 	public static String getString(String s, String srcEncoding,
 			String destEncoding) {
@@ -53,13 +53,13 @@ public class IPUtil {
 	}
 
 	/**
-	 * 根据某种编码方式将字节数组转换成字符�?
+	 * 根据某种编码方式将字节数组转换成字符
 	 *
 	 * @param b
 	 *            字节数组
 	 * @param encoding
 	 *            编码方式
-	 * @return 如果encoding不支持，返回�?��缺省编码的字符串
+	 * @return 如果encoding不支持，返回缺省编码的字符串
 	 */
 	public static String getString(byte[] b, String encoding) {
 		try {
@@ -70,7 +70,7 @@ public class IPUtil {
 	}
 
 	/**
-	 * 根据某种编码方式将字节数组转换成字符�?
+	 * 根据某种编码方式将字节数组转换成字符
 	 *
 	 * @param b
 	 *            字节数组
@@ -80,7 +80,7 @@ public class IPUtil {
 	 *            要转换的长度
 	 * @param encoding
 	 *            编码方式
-	 * @return 如果encoding不支持，返回�?��缺省编码的字符串
+	 * @return 如果encoding不支持，返回缺省编码的字符串
 	 */
 	public static String getString(byte[] b, int offset, int len,
 			String encoding) {
@@ -93,7 +93,7 @@ public class IPUtil {
 
 	/**
 	 * @param ip
-	 *            ip的字节数组形�?
+	 *            ip的字节数组形
 	 * @return 字符串形式的ip
 	 */
 	public static String getIpStringFromBytes(byte[] ip) {

@@ -18,7 +18,7 @@ public class NumberUtil {
 	private static String FORMAT_STYLE_2="#.##";
 
     /**
-     * 转换为整�?
+     * 转换为整
      *
      * @param number
      * @return
@@ -50,9 +50,9 @@ public class NumberUtil {
     }
 
     /**
-     * 格式浮点�?
+     * 格式浮点
      *
-     * @param number 浮点�?
+     * @param number 浮点
      * @param format 格式
      * @return
      */
@@ -71,9 +71,9 @@ public class NumberUtil {
     }
 
     /**
-     * 格式浮点�?
+     * 格式浮点
      *
-     * @param number 浮点�?
+     * @param number 浮点
      * @param format 格式
      * @return
      */

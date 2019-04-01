@@ -18,7 +18,7 @@ public class PropertiesUtil {
 	 * 读取资源文件
 	 * 
 	 * @param path
-	 *            路径+文件�?
+	 *            路径+文件
 	 * @param key
 	 * @return
 	 */
